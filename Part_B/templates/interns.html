@@ -1,0 +1,36 @@
+<table border="1">
+
+<tr>
+    <th>ID</th>
+    <th>Name</th>
+    <th>Email</th>
+    <th>Domain</th>
+    <th>Action</th>
+</tr>
+
+{% for i in interns %}
+
+<tr>
+    <td>{{ i.id }}</td>
+    <td>{{ i.name }}</td>
+    <td>{{ i.email }}</td>
+    <td>{{ i.domain }}</td>
+
+    <td>
+        <a href="/intern/{{ i.id }}">
+            Edit
+        </a>
+
+        <form action="/intern/{{ i.id }}" method="DELETE">
+            <button type="submit">Delete</button>
+        </form>
+    </td>
+</tr>
+
+{% endfor %}
+
+</table>
+
+<br>
+
+<a href="/register">Register Intern</a>
