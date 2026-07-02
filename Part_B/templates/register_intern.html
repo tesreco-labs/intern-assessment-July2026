@@ -1,16 +1,17 @@
-<form method="POST">
+{% extends "base.html" %}
 
-    Name:
-    <input type="text" name="name"><br><br>
+{% block content %}
 
-    Email:
-    <input type="email" name="email"><br><br>
+<form method="POST" action="/register">
 
-    Domain:
-    <input type="text" name="domain"><br><br>
+    <h2>Register Intern</h2>
 
-    <button type="submit">
-        Register Intern
-    </button>
+    <input name="name" placeholder="Name" required>
+    <input name="email" placeholder="Email" required>
+    <input name="domain" placeholder="Domain" required>
+
+    <button type="submit">Register</button>
 
 </form>
+
+{% endblock %}

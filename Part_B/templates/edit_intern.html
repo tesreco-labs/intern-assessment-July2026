@@ -1,28 +1,36 @@
-<form method="POST">
+{% extends "base.html" %}
 
-    Name:
-    <input type="text"
-           name="name"
-           value="{{ intern.name }}">
+{% block content %}
 
-    <br><br>
+<div class="card">
+    <h2>✏️ Edit Intern</h2>
 
-    Email:
-    <input type="email"
-           name="email"
-           value="{{ intern.email }}">
+    <input id="name" value="{{ intern.name }}">
+    <input id="email" value="{{ intern.email }}">
+    <input id="domain" value="{{ intern.domain }}">
 
-    <br><br>
+    <button onclick="updateIntern()">Update</button>
+</div>
 
-    Domain:
-    <input type="text"
-           name="domain"
-           value="{{ intern.domain }}">
+<script>
+function updateIntern() {
 
-    <br><br>
+    fetch(`/intern/{{ intern.id }}`, {
+        method: "PUT",
+        headers: {"Content-Type": "application/json"},
+        body: JSON.stringify({
+            name: document.getElementById("name").value,
+            email: document.getElementById("email").value,
+            domain: document.getElementById("domain").value
+        })
+    })
+    .then(res => res.json())
+    .then(data => {
+        alert(data.message);
+        window.location.href = "/interns";
+    });
 
-    <button type="submit">
-        Update
-    </button>
+}
+</script>
 
-</form>
+{% endblock %}

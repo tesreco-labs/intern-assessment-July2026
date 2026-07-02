@@ -72,13 +72,48 @@ def get_intern(id):
     SELECT * FROM interns WHERE id=?               
     """, (id,))
 
-    intern = cursor.fetchall()
-    print(intern)
+    row = cursor.fetchone()
 
-    connection.commit()
     connection.close()
 
-    return render_template('intern.html', intern=intern)
+    if not row:
+        return "Not Found", 404
+
+    intern = {
+        "id": row[0],
+        "name": row[1],
+        "email": row[2],
+        "domain": row[3]
+    }
+
+    return render_template("intern.html", intern=intern)
+
+@app.route('/edit-intern/<int:id>')
+def edit_page(id):
+    connection = connect_db()
+    cursor = connection.cursor()
+
+    cursor.execute("SELECT * FROM interns WHERE id=?", (id,))
+    row = cursor.fetchone()
+
+    intern = {
+        "id": row[0],
+        "name": row[1],
+        "email": row[2],
+        "domain": row[3]
+    }
+
+    return render_template("edit_intern.html", intern=intern)
+
+
+@app.route('/attendance-form/<int:id>')
+def attendance_page(id):
+    return render_template("attendance.html", intern_id=id)
+
+
+@app.route('/assign-mentor-form/<int:id>')
+def mentor_page(id):
+    return render_template("assign_mentor.html", intern_id=id)
 
 @app.route('/intern/<int:id>', methods=['PUT'])
 def update_intern(id):

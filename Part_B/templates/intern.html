@@ -1,6 +1,19 @@
-{% for i in intern %}
-<div>id : {{i[0]}}</div>
-<div>name : {{i[1]}}</div>
-<div>emaill : {{i[2]}}</div>
-<div>domain : {{i[3]}}</div>
-{% endfor %}
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="card">
+    <h2>👤 Intern Profile</h2>
+
+    <p><b>ID:</b> {{ intern.id }}</p>
+    <p><b>Name:</b> {{ intern.name }}</p>
+    <p><b>Email:</b> {{ intern.email }}</p>
+    <p><b>Domain:</b> {{ intern.domain }}</p>
+</div>
+
+<br>
+
+<a href="/attendance-form/{{ intern.id }}"><button>📅 Attendance</button></a>
+<a href="/assign-mentor-form/{{ intern.id }}"><button>🎓 Mentor</button></a>
+
+{% endblock %}

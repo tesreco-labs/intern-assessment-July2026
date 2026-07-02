@@ -1,0 +1,182 @@
+body {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    margin: 0;
+    background: linear-gradient(135deg, #eef2f7, #f8fbff);
+    min-height: 100vh;
+    color: #333;
+}
+
+/* NAVBAR */
+.navbar {
+    background: linear-gradient(90deg, #0d6efd, #4f8cff);
+    padding: 12px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;   /* center whole navbar content */
+    gap: 25px;
+    color: white;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+/* optional: limit content width so it doesn't stretch */
+.navbar-inner {
+    max-width: 1100px;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+/* title */
+.navbar h1 {
+    font-size: 18px;
+    margin: 0;
+}
+
+/* links */
+.navbar a {
+    color: white;
+    text-decoration: none;
+    font-weight: 600;
+    padding: 6px 10px;
+    border-radius: 6px;
+}
+
+.navbar a:hover {
+    background: rgba(255,255,255,0.15);
+}
+
+/* CONTAINER */
+.container {
+    padding: 30px;
+}
+
+/* CARD */
+.card {
+    background: white;
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+    margin-top: 20px;
+}
+
+/* FORM */
+form {
+    background: white;
+    padding: 25px;
+    border-radius: 15px;
+    width: 100%;
+    max-width: 420px;
+    margin: 30px auto;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+}
+
+input, select {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    transition: 0.3s;
+}
+
+input:focus {
+    border-color: #0d6efd;
+    outline: none;
+}
+
+/* BUTTONS */
+button {
+    background: linear-gradient(90deg, #0d6efd, #4f8cff);
+    color: white;
+    padding: 10px 16px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: 0.3s;
+    margin: 5px;
+}
+
+button:hover {
+    transform: scale(1.05);
+}
+
+.delete-btn {
+    background: linear-gradient(90deg, #dc3545, #ff5c6c);
+}
+
+/* TABLE */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+}
+
+th {
+    background: #0d6efd;
+    color: white;
+    padding: 12px;
+}
+
+td {
+    padding: 12px;
+    text-align: center;
+}
+
+tr:hover {
+    background: #f1f6ff;
+}
+
+/* LINKS */
+a {
+    text-decoration: none;
+}
+
+
+.container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 30px 20px;
+}
+
+/* Prevent full stretch on large screens */
+.card, form, table {
+    max-width: 100%;
+}
+
+/* Center forms nicely */
+form {
+    margin: 30px auto;
+}
+
+/* Make table responsive */
+.table-wrapper {
+    overflow-x: auto;
+    margin-top: 20px;
+}
+
+
+@media (max-width: 768px) {
+
+    .navbar {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    form {
+        width: 90%;
+    }
+
+    table {
+        font-size: 14px;
+    }
+
+    button {
+        width: 100%;
+    }
+}

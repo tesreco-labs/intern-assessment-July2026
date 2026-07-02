@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="card">
+    <h2>🎓 Assign Mentor</h2>
+
+    <input type="hidden" id="intern_id" value="{{ intern_id }}">
+
+    <input id="mentor_name" placeholder="Mentor Name">
+
+    <button onclick="assignMentor()">Assign</button>
+</div>
+
+<script>
+function assignMentor() {
+    fetch("/assign-mentor", {
+        method: "POST",
+        headers: {"Content-Type": "application/json"},
+        body: JSON.stringify({
+            intern_id: document.getElementById("intern_id").value,
+            mentor_name: document.getElementById("mentor_name").value
+        })
+    })
+    .then(res => res.json())
+    .then(data => alert(data.message));
+}
+</script>
+
+{% endblock %}

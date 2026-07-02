@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="card">
+    <h2>📅 Mark Attendance</h2>
+
+    <input type="hidden" id="intern_id" value="{{ intern_id }}">
+
+    <input type="date" id="date">
+
+    <select id="status">
+        <option>Present</option>
+        <option>Absent</option>
+    </select>
+
+    <button onclick="submitAttendance()">Submit</button>
+</div>
+
+<script>
+function submitAttendance() {
+    fetch("/attendance", {
+        method: "POST",
+        headers: {"Content-Type": "application/json"},
+        body: JSON.stringify({
+            intern_id: document.getElementById("intern_id").value,
+            date: document.getElementById("date").value,
+            status: document.getElementById("status").value
+        })
+    })
+    .then(res => res.json())
+    .then(data => alert(data.message));
+}
+</script>
+
+{% endblock %}

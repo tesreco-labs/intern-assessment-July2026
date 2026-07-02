@@ -30,7 +30,8 @@ def create_db():
     CREATE TABLE IF NOT EXISTS mentors(
         id INTEGER PRIMARY KEY AUTOINCREMENT,
         intern_id INTEGER,
-        mentor_name TEXT
+        mentor_name TEXT,
+        FOREIGN KEY(intern_id) REFERENCES interns(id)
     )
     """)
 

@@ -1,36 +1,45 @@
-<table border="1">
+{% extends "base.html" %}
 
+{% block content %}
+
+<h2>👨‍💻 Intern Records</h2>
+
+<div class="table-wrapper">
+<table>
 <tr>
     <th>ID</th>
     <th>Name</th>
     <th>Email</th>
     <th>Domain</th>
-    <th>Action</th>
+    <th>Actions</th>
 </tr>
 
 {% for i in interns %}
-
-<tr>
+<tr id="row-{{ i.id }}">
     <td>{{ i.id }}</td>
     <td>{{ i.name }}</td>
     <td>{{ i.email }}</td>
     <td>{{ i.domain }}</td>
 
     <td>
-        <a href="/intern/{{ i.id }}">
-            Edit
-        </a>
-
-        <form action="/intern/{{ i.id }}" method="DELETE">
-            <button type="submit">Delete</button>
-        </form>
+        <a href="/intern/{{ i.id }}"><button>View</button></a>
+        <a href="/edit-intern/{{ i.id }}"><button>Edit</button></a>
+        <button class="delete-btn" onclick="deleteIntern({{ i.id }})">Delete</button>
     </td>
 </tr>
-
 {% endfor %}
-
 </table>
+</div>
 
-<br>
+<script>
+function deleteIntern(id) {
+    fetch(`/intern/${id}`, { method: "DELETE" })
+    .then(res => res.json())
+    .then(data => {
+        alert(data.message);
+        document.getElementById("row-" + id).remove();
+    });
+}
+</script>
 
-<a href="/register">Register Intern</a>
+{% endblock %}

@@ -1,32 +1,62 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>About TESRECO</title>
-</head>
-<body>
+{% extends "base.html" %}
 
-<h1>Organization Overview</h1>
+{% block content %}
 
-<p>
-TESRECO provides internship opportunities
-in modern technologies.
-</p>
+<div class="card">
 
-<h2>Internship Domains</h2>
+    <h2>🏢 Organization Overview</h2>
+    <p>
+        TESRECO is a learning-focused organization that provides structured internship programs
+        to help students gain real-world industry experience.
+    </p>
 
-<ul>
-    <li>Python</li>
-    <li>Data Science</li>
-    <li>Machine Learning</li>
-    <li>Web Development</li>
-</ul>
+</div>
 
-<h2>Mission and Vision</h2>
+<div class="card">
 
-<p>
-Empowering students with practical
-industry-level skills.
-</p>
+    <h2>💡 Internship Domains</h2>
 
-</body>
-</html>
+    <ul>
+        <li>Python Development</li>
+        <li>Data Science & Analytics</li>
+        <li>Machine Learning & AI</li>
+        <li>Web Development (Flask / Django)</li>
+        <li>Database Management (SQL / SQLite)</li>
+    </ul>
+
+</div>
+
+<div class="card">
+
+    <h2>🎯 Mission</h2>
+    <p>
+        Our mission is to bridge the gap between academic learning and industry requirements
+        by providing hands-on project-based internships.
+    </p>
+
+</div>
+
+<div class="card">
+
+    <h2>🚀 Vision</h2>
+    <p>
+        To become a leading internship platform that empowers students with practical skills,
+        mentorship, and career-ready experience in modern technologies.
+    </p>
+
+</div>
+
+<div class="card">
+
+    <h2>📌 Why TESRECO?</h2>
+
+    <ul>
+        <li>Real-world projects</li>
+        <li>Mentor guidance</li>
+        <li>Skill-based evaluation</li>
+        <li>Certificate on completion</li>
+    </ul>
+
+</div>
+
+{% endblock %}

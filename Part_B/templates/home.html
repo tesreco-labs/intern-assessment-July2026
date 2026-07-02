@@ -1,23 +1,15 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>TESRECO</title>
-    <link rel="stylesheet"
-          href="{{ url_for('static',filename='css/style.css') }}">
-</head>
-<body>
+{% extends "base.html" %}
 
-<div class="container">
+{% block content %}
 
-    <div class="navbar">
-    <img src="https://tesreco.com/wp-content/uploads/2026/02/tesreco-3-1.png" width="150" class="logo">
+<div class="card">
+    <h2>🚀 Welcome to TESRECO Internship Portal</h2>
+    <p>Manage interns, attendance, mentors and performance in one place.</p>
 
-    <h1>
-        Welcome to TESRECO Internship Program
-    </h1>
-    </div>
+    <br>
 
+    <a href="/register"><button>➕ Register Intern</button></a>
+    <a href="/interns"><button>📋 View Interns</button></a>
 </div>
 
-</body>
-</html>
+{% endblock %}
