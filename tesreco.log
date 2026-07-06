@@ -1,3 +1,4 @@
-23-06-2026 20:17:37-root-INFO-admin logged in successfully
-23-06-2026 20:17:37-root-INFO-report generation started by admin
-23-06-2026 20:17:37-root-INFO-report generation completed for admin
+2026-07-06 19:13:20,375 - INFO - Login event: admin logged in
+2026-07-06 19:13:20,376 - ERROR - Error event: invalid intern data rejected
+2026-07-06 19:13:20,377 - INFO - Report generation activity: PerformanceReport generated
+2026-07-06 19:13:20,378 - INFO - Report generation activity: Intern list generated
