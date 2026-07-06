@@ -1,0 +1,135 @@
+{% extends "base.html" %}
+
+{% block title %}Python Tasks Demo - TESRECO System{% endblock %}
+
+{% block content %}
+<div class="card" style="border-left: 4px solid #0d6efd;">
+    <h2 style="margin: 0; color: #212529;">Advanced Python Modules Demo</h2>
+    <p style="color: #6c757d; font-size: 0.9rem; margin-top: 0.25rem;">
+        This page runs the modules from Part A dynamically and displays their terminal output logs in the browser.
+    </p>
+</div>
+
+<div class="demo-card-grid" style="margin-top: 1.5rem;">
+
+    <!-- Task 1 -->
+    <div class="card">
+        <h4 style="margin: 0 0 0.5rem 0; color: #0d6efd;">Task 1: Intern Class Design</h4>
+        <p style="font-size: 0.85rem; color: #6c757d; margin: 0 0 0.5rem 0;">Constructor, property getters/setters, and <code>__str__</code> output.</p>
+        <div class="demo-output-box">{{ demo.intern_str }}</div>
+    </div>
+
+    <!-- Task 2 -->
+    <div class="card">
+        <h4 style="margin: 0 0 0.5rem 0; color: #0d6efd;">Task 2: Performance Calculator</h4>
+        <p style="font-size: 0.85rem; color: #6c757d; margin: 0 0 0.5rem 0;">Computed evaluation result with custom log decorator output.</p>
+        <div class="demo-output-box">Average: {{ demo.perf_result.average }}
+Grade: {{ demo.perf_result.grade }}
+Status: {{ demo.perf_result.status }}</div>
+    </div>
+
+    <!-- Task 3 -->
+    <div class="card">
+        <h4 style="margin: 0 0 0.5rem 0; color: #0d6efd;">Task 3: Custom Iterator</h4>
+        <p style="font-size: 0.85rem; color: #6c757d; margin: 0 0 0.5rem 0;">Generates sequential TESRECO Intern IDs using generator iterator protocol.</p>
+        <div class="demo-output-box">Generated ID List:
+{% for tid in demo.generated_ids %} - {{ tid }}
+{% endfor %}</div>
+    </div>
+
+    <!-- Task 4 -->
+    <div class="card">
+        <h4 style="margin: 0 0 0.5rem 0; color: #0d6efd;">Task 4: Generator Function</h4>
+        <p style="font-size: 0.85rem; color: #6c757d; margin: 0 0 0.5rem 0;">Yields internship certificates one at a time using <code>yield</code>.</p>
+        <div class="demo-output-box">Generated Certificates:
+{% for output in demo.generator_output %} - {{ output }}
+{% endfor %}</div>
+    </div>
+
+    <!-- Task 5 -->
+    <div class="card">
+        <h4 style="margin: 0 0 0.5rem 0; color: #0d6efd;">Task 5: Custom Exceptions</h4>
+        <p style="font-size: 0.85rem; color: #6c757d; margin: 0 0 0.5rem 0;">Checks inputs and catches InvalidEmailError/InvalidDurationError.</p>
+        <div class="demo-output-box">Validation Logs:
+{% for log in demo.exception_logs %} - {{ log }}
+{% endfor %}</div>
+    </div>
+
+    <!-- Task 6 -->
+    <div class="card">
+        <h4 style="margin: 0 0 0.5rem 0; color: #0d6efd;">Task 6: Shallow vs Deep Copy</h4>
+        <p style="font-size: 0.85rem; color: #6c757d; margin: 0 0 0.5rem 0;">Demonstrates memory reference sharing in copy operations.</p>
+        <div class="demo-output-box">Original projects: {{ demo.copy_results.original_projects }}
+Shallow projects: {{ demo.copy_results.shallow_projects }}
+Deep projects: {{ demo.copy_results.deep_projects }}
+
+Shallow shares object? -> {{ demo.copy_results.shallow_shares_ref }}
+Deep shares object? -> {{ demo.copy_results.deep_shares_ref }}</div>
+    </div>
+
+    <!-- Task 7 -->
+    <div class="card">
+        <h4 style="margin: 0 0 0.5rem 0; color: #0d6efd;">Task 7: Multiple Inheritance</h4>
+        <p style="font-size: 0.85rem; color: #6c757d; margin: 0 0 0.5rem 0;">MRO order search and multiple parent class inheritance details.</p>
+        <div class="demo-output-box">MRO Order:
+{% for cls in demo.mro_list %} {{ loop.index }}. {{ cls }}
+{% endfor %}
+Mentor details:
+{{ demo.mentor_info }}
+
+Greet: {{ demo.mentor_greet }}
+Work: {{ demo.mentor_work }}
+Advise: {{ demo.mentor_advise }}</div>
+    </div>
+
+    <!-- Task 8 -->
+    <div class="card">
+        <h4 style="margin: 0 0 0.5rem 0; color: #0d6efd;">Task 8: Abstract Reports Class</h4>
+        <p style="font-size: 0.85rem; color: #6c757d; margin: 0 0 0.5rem 0;">Generates Attendance & Performance reports from abstract layout.</p>
+        <div class="demo-output-box">{{ demo.att_report }}
+
+{{ demo.perf_report }}</div>
+    </div>
+
+    <!-- Task 9 -->
+    <div class="card">
+        <h4 style="margin: 0 0 0.5rem 0; color: #0d6efd;">Task 9: Lambda & Functional</h4>
+        <p style="font-size: 0.85rem; color: #6c757d; margin: 0 0 0.5rem 0;">Calculates statistics on scores list using map, filter, and reduce.</p>
+        <div class="demo-output-box">Original: {{ demo.func_prog.original }}
+Normalized: {{ demo.func_prog.normalized }}
+Above 80: {{ demo.func_prog.high_performers }}
+Average: {{ demo.func_prog.average }}
+Highest Score: {{ demo.func_prog.max }}</div>
+    </div>
+
+    <!-- Task 10 -->
+    <div class="card">
+        <h4 style="margin: 0 0 0.5rem 0; color: #0d6efd;">Task 10: CSV File Operations</h4>
+        <p style="font-size: 0.85rem; color: #6c757d; margin: 0 0 0.5rem 0;">Adds records, searches rows, and deletes files using interns.csv.</p>
+        <div class="demo-output-box">Search Demo User: {{ demo.csv_search }}
+Delete status: {{ demo.csv_delete }}
+CSV Backups:
+{% for record in demo.csv_records %} - ID {{ record.intern_id }}: {{ record.name }} ({{ record.domain }})
+{% endfor %}</div>
+    </div>
+
+    <!-- Task 11 & 12 -->
+    <div class="card">
+        <h4 style="margin: 0 0 0.5rem 0; color: #0d6efd;">Task 11 & 12: Concurrency</h4>
+        <p style="font-size: 0.85rem; color: #6c757d; margin: 0 0 0.5rem 0;">Threading simulation processes and parallel worker processes pool map.</p>
+        <div class="demo-output-box">[Multithreading]
+{{ demo.thread_status }}
+
+[Multiprocessing]
+{{ demo.process_status }}</div>
+    </div>
+
+    <!-- Task 13 -->
+    <div class="card">
+        <h4 style="margin: 0 0 0.5rem 0; color: #0d6efd;">Task 13: Logging events</h4>
+        <p style="font-size: 0.85rem; color: #6c757d; margin: 0 0 0.5rem 0;">Real-time logs recorded inside local <code>tesreco.log</code> file.</p>
+        <div class="demo-output-box">{% for line in demo.log_lines %}{{ line }}{% endfor %}</div>
+    </div>
+
+</div>
+{% endblock %}

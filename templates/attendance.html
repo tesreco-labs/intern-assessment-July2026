@@ -1,0 +1,111 @@
+{% extends "base.html" %}
+
+{% block title %}Attendance Management - TESRECO System{% endblock %}
+
+{% block content %}
+<div class="card" style="border-left: 4px solid #0d6efd;">
+    <h2 style="margin: 0; color: #212529;">Intern Attendance Register</h2>
+    <p style="color: #6c757d; font-size: 0.9rem; margin-top: 0.25rem;">
+        Log daily attendance status or review recent log entries.
+    </p>
+</div>
+
+<div class="two-column-layout">
+    <!-- Form Side -->
+    <div class="card">
+        <h3 class="card-title">Mark Attendance</h3>
+        
+        {% if interns %}
+            <form action="/attendance" method="POST" id="attendance-form">
+                <div class="form-group">
+                    <label for="intern_id">Select Intern Name:</label>
+                    <select id="intern_id" name="intern_id" required class="form-control">
+                        <option value="" disabled selected>-- Select Intern --</option>
+                        {% for intern in interns %}
+                            <option value="{{ intern.id }}">{{ intern.name }} (Domain: {{ intern.domain }})</option>
+                        {% endfor %}
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="date">Date:</label>
+                    <input type="date" id="date" name="date" required class="form-control">
+                </div>
+
+                <div class="form-group">
+                    <label>Attendance Status:</label>
+                    <div class="radio-group">
+                        <label class="radio-label">
+                            <input type="radio" name="status" value="Present" checked> Present
+                        </label>
+                        <label class="radio-label">
+                            <input type="radio" name="status" value="Absent"> Absent
+                        </label>
+                        <label class="radio-label">
+                            <input type="radio" name="status" value="Late"> Late
+                        </label>
+                    </div>
+                </div>
+
+                <button type="submit" class="btn btn-primary btn-block" style="margin-top: 1rem;">Log Attendance</button>
+            </form>
+        {% else %}
+            <div style="text-align: center; padding: 2rem 0;">
+                <p style="color: #6c757d;">No registered interns found to mark attendance.</p>
+                <a href="/add-intern" class="btn btn-secondary btn-sm">Register Intern First</a>
+            </div>
+        {% endif %}
+    </div>
+
+    <!-- Logs Side -->
+    <div class="card">
+        <h3 class="card-title">Recent Logs</h3>
+        
+        {% if records %}
+            <div style="max-height: 380px; overflow-y: auto;">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Date</th>
+                            <th>Intern</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for record in records %}
+                            <tr>
+                                <td>{{ record.date }}</td>
+                                <td>{{ record.intern_name }}</td>
+                                <td>
+                                    {% if record.status == 'Present' %}
+                                        <span class="badge badge-success">Present</span>
+                                    {% elif record.status == 'Absent' %}
+                                        <span class="badge badge-danger">Absent</span>
+                                    {% else %}
+                                        <span class="badge badge-warning">Late</span>
+                                    {% endif %}
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        {% else %}
+            <div style="text-align: center; padding: 3rem 0;">
+                <p style="color: #6c757d; font-size: 0.95rem;">No attendance records found.</p>
+            </div>
+        {% endif %}
+    </div>
+</div>
+
+<script>
+    // Automatically set default date input to today
+    document.addEventListener('DOMContentLoaded', () => {
+        const dateInput = document.getElementById('date');
+        if (dateInput) {
+            const today = new Date().toISOString().split('T')[0];
+            dateInput.value = today;
+        }
+    });
+</script>
+{% endblock %}

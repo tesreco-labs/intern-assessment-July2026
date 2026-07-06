@@ -1,3 +1,52 @@
-23-06-2026 20:17:37-root-INFO-admin logged in successfully
-23-06-2026 20:17:37-root-INFO-report generation started by admin
-23-06-2026 20:17:37-root-INFO-report generation completed for admin
+[2026-06-22 17:10:39,568] INFO: Sample mentors populated in SQLite.
+[2026-06-22 17:10:39,571] INFO: Database initialized successfully at startup.
+[2026-06-22 17:10:39,913] INFO: Database initialized successfully at startup.
+[2026-06-22 17:11:22,410] INFO: Intern registered: NIdhika Saktawat (nidhikasaktawat2000@gmail.com)
+[2026-06-22 17:12:41,336] INFO: Accessed Advanced Python Demonstration page from client.
+[2026-06-22 17:41:13,337] INFO: Database initialized successfully at startup.
+[2026-06-22 17:41:14,007] INFO: Database initialized successfully at startup.
+[2026-06-22 17:42:50,851] ERROR: Failed registration attempt: duplicate email 'nidhikasaktawat2000@gmail.com'
+[2026-06-22 17:43:41,658] ERROR: Error saving intern: database is locked
+[2026-06-22 17:44:46,245] ERROR: Error saving intern: database is locked
+[2026-06-22 17:50:15,043] INFO: Database initialized successfully at startup.
+[2026-06-22 17:50:15,594] INFO: Database initialized successfully at startup.
+[2026-06-22 17:50:42,168] INFO: Accessed Advanced Python Demonstration page from client.
+[2026-06-22 17:51:17,678] INFO: Accessed Advanced Python Demonstration page from client.
+[2026-06-22 17:52:14,644] INFO: Intern registered: Deepti suryavanshi (Deeptisuryavanshi@gmail.com)
+[2026-06-22 17:52:56,655] INFO: Attendance recorded for intern ID 2 on 2026-06-19: Present
+[2026-06-22 17:53:07,518] INFO: Attendance recorded for intern ID 1 on 2026-06-19: Present
+[2026-06-22 17:53:15,464] INFO: Attendance recorded for intern ID 2 on 2026-06-22: Present
+[2026-06-22 17:53:20,792] INFO: Attendance recorded for intern ID 1 on 2026-06-22: Present
+[2026-06-22 18:28:44,685] INFO: Database initialized successfully at startup.
+[2026-06-22 18:29:03,287] INFO: Database initialized successfully at startup.
+[2026-06-23 13:39:36,973] INFO: Database initialized successfully at startup.
+[2026-06-23 13:39:37,603] INFO: Database initialized successfully at startup.
+[2026-06-23 13:41:17,130] INFO: Mentor ID 2 assigned to intern ID 2
+[2026-06-23 13:41:18,097] INFO: Database initialized successfully at startup.
+[2026-06-23 13:41:23,044] INFO: Accessed Advanced Python Demonstration page from client.
+[2026-06-23 14:09:09,000] INFO: Accessed Advanced Python Demonstration page from client.
+[2026-06-23 18:17:54,668] INFO: Database initialized successfully at startup.
+[2026-06-23 18:17:55,148] INFO: Database initialized successfully at startup.
+[2026-06-23 18:18:08,690] INFO: Database initialized successfully at startup.
+[2026-06-23 18:22:54,199] INFO: Mentor ID 3 assigned to intern ID 1
+[2026-06-23 18:26:10,286] INFO: Accessed Advanced Python Demonstration page from client.
+[2026-06-23 21:31:40,627] INFO: Database initialized successfully at startup.
+[2026-06-23 21:31:41,530] INFO: Database initialized successfully at startup.
+[2026-06-23 21:32:01,362] INFO: Database initialized successfully at startup.
+[2026-06-23 21:32:02,265] INFO: Database initialized successfully at startup.
+[2026-06-23 21:32:20,617] INFO: Database initialized successfully at startup.
+[2026-06-23 21:32:26,266] INFO: Database initialized successfully at startup.
+[2026-06-23 21:32:29,558] INFO: Database initialized successfully at startup.
+[2026-06-23 21:33:52,885] INFO: Database initialized successfully at startup.
+[2026-07-06 10:55:56,138] INFO: Database initialized successfully at startup.
+[2026-07-06 10:55:57,055] INFO: Database initialized successfully at startup.
+[2026-07-06 10:59:19,706] INFO: Database initialized successfully at startup.
+[2026-07-06 10:59:20,480] INFO: Database initialized successfully at startup.
+[2026-07-06 11:00:45,826] INFO: Database initialized successfully at startup.
+[2026-07-06 11:01:22,950] INFO: Database initialized successfully at startup.
+[2026-07-06 11:01:30,995] INFO: Database initialized successfully at startup.
+[2026-07-06 11:01:31,543] INFO: Database initialized successfully at startup.
+[2026-07-06 11:08:05,050] INFO: API Register Success: Nidhika
+[2026-07-06 11:11:43,048] INFO: API Update Success for Intern ID 1
+[2026-07-06 11:37:11,058] INFO: Database initialized successfully at startup.
+[2026-07-06 11:37:11,600] INFO: Database initialized successfully at startup.
