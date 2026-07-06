@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+
+{% block title %}Register Intern - TESRECO Portal{% endblock %}
+
+{% block content %}
+<div class="form-container">
+    <div class="card">
+        <h2 class="card-title" style="text-align: center; border-bottom: 2px solid #0d6efd;">Intern Registration Form</h2>
+        <p style="text-align: center; color: #6c757d; font-size: 0.9rem; margin-bottom: 1.5rem;">
+            Fill in the details below to add a new intern to the database.
+        </p>
+
+        <form action="/add-intern" method="POST" id="intern-register-form">
+            <div class="form-group">
+                <label for="name">Full Name:</label>
+                <input type="text" id="name" name="name" placeholder="Enter full name (e.g. Vaibhav)" required class="form-control">
+                <span id="name-error" style="color: #dc3545; font-size: 0.8rem;"></span>
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email Address:</label>
+                <input type="email" id="email" name="email" placeholder="Enter email (e.g. Vaibhav@gmail.com)" required class="form-control">
+                <span id="email-error" style="color: #dc3545; font-size: 0.8rem;"></span>
+            </div>
+
+            <div class="form-group">
+                <label for="domain">Internship Domain:</label>
+                <select id="domain" name="domain" required class="form-control">
+                    <option value="" disabled selected>-- Select Domain --</option>
+                    <option value="Data Science">Data Science</option>
+                    <option value="Web Development">Web Development</option>
+                    <option value="Artificial Intelligence">Artificial Intelligence</option>
+                    <option value="Python Development">Python Development</option>
+                    <option value="Cloud & DevOps">Cloud & DevOps</option>
+                    <option value="Cybersecurity">Cybersecurity</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="duration">Duration (Months):</label>
+                <input type="number" id="duration" name="duration" min="1" max="12" value="3" required class="form-control">
+                <small class="form-help">Enter a value between 1 and 12 months.</small>
+                <span id="duration-error" style="color: #dc3545; font-size: 0.8rem;"></span>
+            </div>
+
+            <div style="margin-top: 1.5rem;">
+                <button type="submit" class="btn btn-primary btn-block">Register Intern</button>
+                <a href="/view-interns" class="btn btn-secondary btn-block" style="margin-top: 0.5rem; text-align: center;">Cancel & View List</a>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

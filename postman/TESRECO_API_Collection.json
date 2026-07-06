@@ -1,0 +1,184 @@
+{
+	"info": {
+		"_postman_id": "8e36780c-a9a3-48b4-8cf5-9982701d0a5e",
+		"name": "TESRECO Intern Management API",
+		"description": "API collection to test all endpoints of the TESRECO Intern Management Portal including Registration, Listing, Updating, Deletion, Attendance, and Mentor Assignment.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Register Intern",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"Vaibhav\",\n    \"email\": \"Vaibhav@gmail.com\",\n    \"domain\": \"Data Science\",\n    \"duration\": 3\n}"
+				},
+				"url": {
+					"raw": "http://127.0.0.1:5000/register",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get All Interns",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:5000/interns",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"interns"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Intern Details",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"Vaibhav Kumar\",\n    \"domain\": \"Artificial Intelligence\",\n    \"duration\": 6\n}"
+				},
+				"url": {
+					"raw": "http://127.0.0.1:5000/intern/1",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"intern",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Log Attendance",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"intern_id\": 1,\n    \"date\": \"2026-06-22\",\n    \"status\": \"Present\"\n}"
+				},
+				"url": {
+					"raw": "http://127.0.0.1:5000/attendance",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"attendance"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Assign Mentor to Intern",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"intern_id\": 1,\n    \"mentor_id\": 2\n}"
+				},
+				"url": {
+					"raw": "http://127.0.0.1:5000/assign-mentor",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"assign-mentor"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Intern Record",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:5000/intern/1",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"intern",
+						"1"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

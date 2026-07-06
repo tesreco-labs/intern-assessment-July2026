@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% block title %}About - TESRECO System{% endblock %}
+
+{% block content %}
+<div class="card">
+    <h1 class="card-title" style="font-size: 1.8rem; border-bottom: 2px solid #0d6efd;">About TESRECO Technologies</h1>
+    <p>
+        TESRECO Technologies is a software solutions provider specializing in IT consultancy, research, and talent development. 
+        This Intern Management System is developed as part of an academic-level evaluation program to demonstrate full-stack Python development.
+    </p>
+
+    <h3 style="margin-top: 1.5rem; color: #212529;">Internship Objectives</h3>
+    <p>
+        The objective of this portal is to digitize training workflows including registration, tracking daily attendance logs, 
+        assigning internal mentors, and conducting performance evaluation reviews.
+    </p>
+
+    <h3 style="margin-top: 1.5rem; color: #212529;">Mission and Vision</h3>
+    <p>
+        <strong>Mission:</strong> To streamline talent training workflows through simple web architectures. <br>
+        <strong>Vision:</strong> To build simple, scalable tools that ease administrative management tasks in corporate environments.
+    </p>
+</div>
+
+<div class="card">
+    <h3 class="card-title">Internship Domains Offered</h3>
+    <div class="card-grid">
+        {% for domain in domains %}
+            <div style="border: 1px solid #dee2e6; border-radius: 4px; padding: 1rem; background-color: #f8f9fa;">
+                <h4 style="margin: 0 0 0.5rem 0; color: #0d6efd;">{{ domain.icon }} {{ domain.name }}</h4>
+                <p style="font-size: 0.85rem; color: #555; margin: 0;">{{ domain.desc }}</p>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

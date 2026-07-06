@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+
+{% block title %}TESRECO Intern Portal - Dashboard{% endblock %}
+
+{% block content %}
+<div class="hero-section">
+    <h1 class="hero-title">TESRECO Intern Management Portal</h1>
+    <p class="hero-subtitle">
+        This portal is built as an internship assessment project. It provides features to register interns, 
+        record daily attendance, assign technical mentors, and compute performance scores using Flask and SQLite.
+    </p>
+    <div class="hero-actions">
+        <a href="/add-intern" class="btn btn-primary">Add New Intern</a>
+        <a href="/view-interns" class="btn btn-secondary">View Registered Interns</a>
+    </div>
+</div>
+
+<!-- Simple Statistic Cards -->
+<div class="stat-container">
+    <div class="stat-card">
+        <div class="stat-icon">👥</div>
+        <div class="stat-number" id="stats-interns-count">{{ stats.interns }}</div>
+        <div class="stat-label">Total Interns</div>
+    </div>
+    
+    <div class="stat-card">
+        <div class="stat-icon">👨‍🏫</div>
+        <div class="stat-number">{{ stats.mentors }}</div>
+        <div class="stat-label">Total Mentors</div>
+    </div>
+    
+    <div class="stat-card">
+        <div class="stat-icon">📚</div>
+        <div class="stat-number">6</div>
+        <div class="stat-label">Technical Domains</div>
+    </div>
+
+    <div class="stat-card">
+        <div class="stat-icon">✔️</div>
+        <div class="stat-number">Active</div>
+        <div class="stat-label">System Status</div>
+    </div>
+</div>
+
+<div class="card">
+    <h3 class="card-title">Project Features</h3>
+    <ul>
+        <li><strong>Database CRUD:</strong> Simple web forms to Register, Read, Update and Delete intern details in SQLite.</li>
+        <li><strong>Attendance Log:</strong> Store daily attendance (Present, Absent, Late) for registered interns.</li>
+        <li><strong>Mentor Allocation:</strong> Link professional advisors with interns for specialized guidance.</li>
+        <li><strong>Advanced Python Demo:</strong> Dedicated demo page running decorators, iterators, functional programming, file handling, multithreading, and multiprocessing live.</li>
+    </ul>
+</div>
+
+<!-- Asynchronous Fetch for stats to verify API functionality -->
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        fetch('/interns')
+            .then(res => res.json())
+            .then(data => {
+                const count = Array.isArray(data) ? data.length : data.total || 0;
+                document.getElementById('stats-interns-count').innerText = count;
+            })
+            .catch(err => console.log('Error fetching stats:', err));
+    });
+</script>
+{% endblock %}

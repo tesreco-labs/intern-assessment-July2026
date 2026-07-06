@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+
+{% block title %}Intern Database List - TESRECO Portal{% endblock %}
+
+{% block content %}
+<div class="card">
+    <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid #0d6efd; padding-bottom: 0.5rem; margin-bottom: 1.5rem;">
+        <h2 style="margin: 0; color: #212529;">Registered Interns Database</h2>
+        <a href="/add-intern" class="btn btn-primary btn-sm">+ Add Intern</a>
+    </div>
+
+    {% if interns %}
+        <div class="table-responsive">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Domain</th>
+                        <th>Duration</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for intern in interns %}
+                        <tr>
+                            <td><strong>#{{ intern.id }}</strong></td>
+                            <td>{{ intern.name }}</td>
+                            <td>{{ intern.email }}</td>
+                            <td>
+                                <span class="badge badge-info">{{ intern.domain }}</span>
+                            </td>
+                            <td>{{ intern.duration }} Months</td>
+                            <td>
+                                <div class="action-links">
+                                    <a href="/edit-intern/{{ intern.id }}" style="color: #ffc107; font-weight: bold;">[Edit]</a>
+                                    <form action="/delete-intern/{{ intern.id }}" method="POST" onsubmit="return confirm('Are you sure you want to delete this intern?');" style="display: inline;">
+                                        <button type="submit" style="background: none; border: none; color: #dc3545; font-weight: bold; cursor: pointer; padding: 0;">[Delete]</button>
+                                    </form>
+                                </div>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    {% else %}
+        <div style="text-align: center; padding: 3rem 0;">
+            <p style="color: #6c757d; font-size: 1.1rem; margin-bottom: 1rem;">No interns currently registered in the system.</p>
+            <a href="/add-intern" class="btn btn-primary">Register First Intern</a>
+        </div>
+    {% endif %}
+</div>
+{% endblock %}
