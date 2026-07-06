@@ -1,3 +1,3 @@
-23-06-2026 20:17:37-root-INFO-admin logged in successfully
-23-06-2026 20:17:37-root-INFO-report generation started by admin
-23-06-2026 20:17:37-root-INFO-report generation completed for admin
+2026-06-27 12:16:22,214 - INFO - User Manju logged in
+2026-06-27 12:16:22,214 - ERROR - Error: division by zero
+2026-06-27 12:16:22,214 - INFO - Performance report generated for Manju
