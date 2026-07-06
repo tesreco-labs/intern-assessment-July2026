@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="content-section">
+    <div class="table-heading">
+        <h1>View Interns</h1>
+        <a class="button-link" href="{{ url_for('add_intern_page') }}">Add Intern</a>
+    </div>
+
+    {% if error %}
+    <p class="error-message">{{ error }}</p>
+    {% endif %}
+
+    <div class="table-wrap">
+        <table>
+            <thead>
+                <tr>
+                    <th>Intern ID</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Domain</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for intern in interns %}
+                <tr>
+                    <td>{{ intern.intern_id }}</td>
+                    <td>{{ intern.name }}</td>
+                    <td>{{ intern.email }}</td>
+                    <td>{{ intern.domain }}</td>
+                    <td class="actions">
+                        <a href="{{ url_for('edit_intern_page', intern_id=intern.intern_id) }}">Edit</a>
+                        <a class="danger" href="{{ url_for('delete_intern_page', intern_id=intern.intern_id) }}">Delete</a>
+                    </td>
+                </tr>
+                {% else %}
+                <tr>
+                    <td colspan="5" class="empty-state">No interns registered.</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</section>
+{% endblock %}

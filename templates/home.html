@@ -1,0 +1,119 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="home-panel" id="home">
+    <div class="hero-mark">
+        <img class="home-logo" src="{{ url_for('static', filename='images/tesreco-logo.png') }}" alt="TESRECO logo">
+    </div>
+    <div class="hero-copy">
+        <p class="eyebrow">Intern Management Portal</p>
+        <h1>Welcome to TESRECO Internship Program</h1>
+        <p class="hero-text">
+            Practical, job-oriented IT learning for students and professionals.
+        </p>
+    </div>
+</section>
+
+<section id="about" class="content-section about-on-home">
+    <div class="section-inner">
+        <p class="eyebrow">About TESRECO</p>
+        <h1>Workforce development for industry-ready IT learning</h1>
+
+        <div class="about-grid">
+            <div class="section-block overview-block">
+                <h2>Organization Overview</h2>
+                <p>
+                    TESRECO is a workforce development organisation based in Indore, committed to
+                    bridging the gap between academic learning and industry expectations. TESRECO
+                    specializes in delivering practical, job-oriented IT Ready programs that prepare
+                    students and professionals for real world challenges.
+                </p>
+            </div>
+
+            <div class="section-block mission-block">
+                <h2>Mission and Vision</h2>
+                <p>
+                    Mission: deliver practical IT learning that helps interns become industry ready.
+                </p>
+                <p>
+                    Vision: prepare students and professionals for real world technology challenges.
+                </p>
+            </div>
+        </div>
+
+        <div class="section-block">
+            <h2>Internship Domains</h2>
+            <ul class="domain-list">
+                {% for domain in domains %}
+                <li>{{ domain }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+</section>
+
+<section id="add-intern" class="form-section">
+    <div class="section-inner split-section">
+        <div>
+            <p class="eyebrow">Registration</p>
+            <h1>Add Intern</h1>
+        </div>
+
+        <form method="post" action="{{ url_for('add_intern_page') }}" class="intern-form">
+            <label for="home-name">Name</label>
+            <input id="home-name" name="name" required>
+
+            <label for="home-email">Email</label>
+            <input id="home-email" name="email" type="email" required>
+
+            <label for="home-domain">Domain</label>
+            <input id="home-domain" name="domain" required>
+
+            <button type="submit">Add Intern</button>
+        </form>
+    </div>
+</section>
+
+<section id="view-interns" class="content-section">
+    <div class="section-inner">
+        <div class="table-heading">
+            <div>
+                <p class="eyebrow">Records</p>
+                <h1>View Interns</h1>
+            </div>
+        </div>
+
+        <div class="table-wrap">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Intern ID</th>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Domain</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for intern in interns %}
+                    <tr>
+                        <td>{{ intern.intern_id }}</td>
+                        <td>{{ intern.name }}</td>
+                        <td>{{ intern.email }}</td>
+                        <td>{{ intern.domain }}</td>
+                        <td class="actions">
+                            <a href="{{ url_for('edit_intern_page', intern_id=intern.intern_id) }}">Edit</a>
+                            <a class="danger" href="{{ url_for('delete_intern_page', intern_id=intern.intern_id) }}">Delete</a>
+                        </td>
+                    </tr>
+                    {% else %}
+                    <tr>
+                        <td colspan="5" class="empty-state">No interns registered.</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</section>
+{% endblock %}

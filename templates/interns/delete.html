@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="form-section">
+    <h1>Delete Intern</h1>
+    <p>Delete {{ intern.name }} ({{ intern.intern_id }})?</p>
+    <form method="post" class="delete-form">
+        <button class="danger-button" type="submit">Delete Intern</button>
+        <a class="button-link secondary" href="{{ url_for('view_interns_page') }}">Cancel</a>
+    </form>
+</section>
+{% endblock %}

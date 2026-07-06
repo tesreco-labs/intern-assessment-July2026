@@ -1,0 +1,96 @@
+{
+  "info": {
+    "name": "TESRECO Intern Management Portal",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "base_url",
+      "value": "http://127.0.0.1:5000"
+    }
+  ],
+  "item": [
+    {
+      "name": "Register Intern",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{base_url}}/register",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"name\": \"Vaibhav\",\n  \"email\": \"Vaibhav@gmail.com\",\n  \"domain\": \"Data Science\"\n}"
+        }
+      }
+    },
+    {
+      "name": "View Interns",
+      "request": {
+        "method": "GET",
+        "url": "{{base_url}}/interns"
+      }
+    },
+    {
+      "name": "Update Intern Details",
+      "request": {
+        "method": "PUT",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{base_url}}/intern/TES001",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"name\": \"Vaibhav Sharma\",\n  \"email\": \"Vaibhav@gmail.com\",\n  \"domain\": \"Flask\"\n}"
+        }
+      }
+    },
+    {
+      "name": "Delete Intern",
+      "request": {
+        "method": "DELETE",
+        "url": "{{base_url}}/intern/TES001"
+      }
+    },
+    {
+      "name": "Store Attendance",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{base_url}}/attendance",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"intern_id\": \"TES001\",\n  \"date\": \"2026-06-21\",\n  \"status\": \"Present\"\n}"
+        }
+      }
+    },
+    {
+      "name": "Assign Mentor",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{base_url}}/assign-mentor",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"intern_id\": \"TES001\",\n  \"mentor_id\": \"M001\"\n}"
+        }
+      }
+    }
+  ]
+}

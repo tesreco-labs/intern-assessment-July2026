@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="content-section">
+    <div class="section-inner">
+        <p class="eyebrow">About TESRECO</p>
+        <h1>Workforce development for industry-ready IT learning</h1>
+
+        <div class="about-grid">
+            <div class="section-block overview-block">
+                <h2>Organization Overview</h2>
+                <p>
+                    TESRECO is a workforce development organisation based in Indore, committed to
+                    bridging the gap between academic learning and industry expectations. TESRECO
+                    specializes in delivering practical, job-oriented IT Ready programs that prepare
+                    students and professionals for real world challenges.
+                </p>
+            </div>
+
+            <div class="section-block mission-block">
+                <h2>Mission and Vision</h2>
+                <p>
+                    Mission: deliver practical IT learning that helps interns become industry ready.
+                </p>
+                <p>
+                    Vision: prepare students and professionals for real world technology challenges.
+                </p>
+            </div>
+        </div>
+
+        <div class="section-block">
+            <h2>Internship Domains</h2>
+            <ul class="domain-list">
+                {% for domain in domains %}
+                <li>{{ domain }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+</section>
+{% endblock %}
