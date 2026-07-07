@@ -84,10 +84,10 @@ kb.set_domain("machine learning")
 kb.set_duration(4)
 print(kb)
 kb.calc_performance()
-kb.add()
+# kb.add()
 
-kb.get_details("TES001")
-kb.remove("TES001")
+# kb.get_details("TES001")
+# kb.remove("TES001")
 # kay = Intern();
 # kay.set_name("kay")
 # kay.set_email("kay@gmail.com")
