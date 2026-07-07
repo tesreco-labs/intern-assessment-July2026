@@ -1,86 +1,59 @@
-from database.db_connect import get_connection
+from database.db_connect import db_connection
 
 
 def insert_intern(name, email, domain, duration):
-    conn = get_connection()
-    cursor = conn.cursor()
-
-    cursor.execute(
-        """
-        INSERT INTO interns(name,email,domain,duration)
-        VALUES(?,?,?,?)
-        """,
-        (name, email, domain, duration)
-    )
-
-    conn.commit()
-    conn.close()
+    with db_connection(commit=True) as conn:
+        cursor = conn.cursor()
+        cursor.execute(
+            """
+            INSERT INTO interns(name,email,domain,duration)
+            VALUES(?,?,?,?)
+            """,
+            (name, email, domain, duration),
+        )
+        return cursor.lastrowid
 
 
 def get_all_interns():
-    conn = get_connection()
-    cursor = conn.cursor()
-
-    cursor.execute("SELECT * FROM interns ORDER BY id DESC")
-
-    interns = cursor.fetchall()
-
-    conn.close()
-
-    return interns
+    with db_connection() as conn:
+        cursor = conn.cursor()
+        cursor.execute("SELECT * FROM interns ORDER BY id DESC")
+        return cursor.fetchall()
 
 
 def get_intern_by_id(id):
-    conn = get_connection()
-    cursor = conn.cursor()
-
-    cursor.execute("SELECT * FROM interns WHERE id=?", (id,))
-
-    intern = cursor.fetchone()
-
-    conn.close()
-
-    return intern
+    with db_connection() as conn:
+        cursor = conn.cursor()
+        cursor.execute("SELECT * FROM interns WHERE id=?", (id,))
+        return cursor.fetchone()
 
 
 def update_intern(id, name, email, domain, duration):
-    conn = get_connection()
-    cursor = conn.cursor()
-
-    cursor.execute(
-        """
-        UPDATE interns
-        SET name=?, email=?, domain=?, duration=?
-        WHERE id=?
-        """,
-        (name, email, domain, duration, id)
-    )
-
-    conn.commit()
-    conn.close()
+    with db_connection(commit=True) as conn:
+        cursor = conn.cursor()
+        cursor.execute(
+            """
+            UPDATE interns
+            SET name=?, email=?, domain=?, duration=?
+            WHERE id=?
+            """,
+            (name, email, domain, duration, id),
+        )
+        return cursor.rowcount
 
 
 def delete_intern(id):
-    conn = get_connection()
-    cursor = conn.cursor()
-
-    cursor.execute(
-        "DELETE FROM interns WHERE id=?",
-        (id,)
-    )
-
-    conn.commit()
-    conn.close()
+    with db_connection(commit=True) as conn:
+        cursor = conn.cursor()
+        cursor.execute(
+            "DELETE FROM interns WHERE id=?",
+            (id,),
+        )
+        return cursor.rowcount
 
 
 def count_interns():
-    conn = get_connection()
-    cursor = conn.cursor()
-
-    cursor.execute("SELECT COUNT(*) AS total FROM interns")
-
-    total = cursor.fetchone()["total"]
-
-    conn.close()
-
-    return total
+    with db_connection() as conn:
+        cursor = conn.cursor()
+        cursor.execute("SELECT COUNT(*) AS total FROM interns")
+        return cursor.fetchone()["total"]

@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TESRECO | Login</title>
+
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+            font-family:Arial, Helvetica, sans-serif;
+        }
+
+        body{
+            height:100vh;
+            background:linear-gradient(135deg,#1e3c72,#2a5298);
+            display:flex;
+            justify-content:center;
+            align-items:center;
+        }
+
+        .login-container{
+            width:900px;
+            height:500px;
+            background:#fff;
+            border-radius:15px;
+            overflow:hidden;
+            display:flex;
+            box-shadow:0 15px 35px rgba(0,0,0,.3);
+        }
+
+        /* Left Side */
+        .left-panel{
+            flex:1;
+            background:linear-gradient(135deg,#004e92,#000428);
+            color:white;
+            display:flex;
+            flex-direction:column;
+            justify-content:center;
+            align-items:center;
+            padding:40px;
+            text-align:center;
+        }
+
+        .left-panel img{
+            width:150px;
+            margin-bottom:20px;
+        }
+
+        .left-panel h1{
+            font-size:32px;
+            margin-bottom:15px;
+        }
+
+        .left-panel p{
+            font-size:16px;
+            line-height:1.6;
+            color:#ddd;
+        }
+
+        /* Right Side */
+        .right-panel{
+            flex:1;
+            display:flex;
+            justify-content:center;
+            align-items:center;
+            padding:40px;
+        }
+
+        .login-box{
+            width:100%;
+            max-width:350px;
+        }
+
+        .login-box h2{
+            text-align:center;
+            color:#1e3c72;
+            margin-bottom:30px;
+        }
+
+        .input-group{
+            margin-bottom:20px;
+        }
+
+        .input-group label{
+            display:block;
+            margin-bottom:8px;
+            color:#444;
+            font-weight:bold;
+        }
+
+        .input-group input{
+            width:100%;
+            padding:12px;
+            border:1px solid #ccc;
+            border-radius:8px;
+            font-size:15px;
+        }
+
+        .input-group input:focus{
+            border-color:#1e3c72;
+            outline:none;
+        }
+
+        .remember{
+            display:flex;
+            justify-content:space-between;
+            align-items:center;
+            margin-bottom:20px;
+            font-size:14px;
+        }
+
+        .remember a{
+            text-decoration:none;
+            color:#1e3c72;
+        }
+
+        button{
+            width:100%;
+            padding:13px;
+            border:none;
+            border-radius:8px;
+            background:#1e3c72;
+            color:white;
+            font-size:16px;
+            cursor:pointer;
+            transition:.3s;
+        }
+
+        button:hover{
+            background:#16305b;
+        }
+
+        .footer{
+            margin-top:20px;
+            text-align:center;
+            color:#666;
+            font-size:14px;
+        }
+
+        @media(max-width:768px){
+
+            .login-container{
+                flex-direction:column;
+                width:95%;
+                height:auto;
+            }
+
+            .left-panel{
+                padding:30px;
+            }
+
+            .left-panel img{
+                width:100px;
+            }
+
+        }
+
+    </style>
+
+</head>
+<body>
+
+<div class="login-container">
+
+    <div class="left-panel">
+
+        <!-- Replace with your logo -->
+        <img src="{{ url_for('static', filename='images/logo.png') }}" alt="TESRECO Logo">
+
+        <h1>TESRECO</h1>
+
+        <p>
+            Internship Management Portal
+            <br><br>
+            Manage interns, mentors, attendance and reports
+            through one centralized dashboard.
+        </p>
+
+    </div>
+
+    <div class="right-panel">
+
+        <div class="login-box">
+
+            <h2>Login</h2>
+
+            <form action="/login" method="POST">
+
+                <div class="input-group">
+                    <label>Email</label>
+                    <input
+                        type="email"
+                        name="email"
+                        placeholder="Enter your email"
+                        required>
+                </div>
+
+                <div class="input-group">
+                    <label>Password</label>
+                    <input
+                        type="password"
+                        name="password"
+                        placeholder="Enter your password"
+                        required>
+                </div>
+
+                <div class="remember">
+
+                    <label>
+                        <input type="checkbox">
+                        Remember Me
+                    </label>
+
+                    <a href="#">Forgot Password?</a>
+
+                </div>
+
+                <button type="submit">
+                    Login
+                </button>
+
+            </form>
+
+            <div class="footer">
+                © 2026 TESRECO Internship Management Portal
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+</body>
+</html>
