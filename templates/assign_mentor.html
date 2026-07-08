@@ -1,0 +1,84 @@
+{% extends "base.html" %}
+
+{% block title %}Mentor Allocation - TESRECO System{% endblock %}
+
+{% block content %}
+<div class="card" style="border-left: 4px solid #0d6efd;">
+    <h2 style="margin: 0; color: #212529;">Mentor Assignment Register</h2>
+    <p style="color: #6c757d; font-size: 0.9rem; margin-top: 0.25rem;">
+        Allocate specialized mentors to interns or view active mentorship records.
+    </p>
+</div>
+
+<div class="two-column-layout">
+    <!-- Form Side -->
+    <div class="card">
+        <h3 class="card-title">Assign Mentor</h3>
+        
+        {% if interns and mentors %}
+            <form action="/assign-mentor" method="POST" id="mentor-assign-form">
+                <div class="form-group">
+                    <label for="intern_id">Select Intern:</label>
+                    <select id="intern_id" name="intern_id" required class="form-control">
+                        <option value="" disabled selected>-- Select Intern --</option>
+                        {% for intern in interns %}
+                            <option value="{{ intern.id }}">{{ intern.name }} (Domain: {{ intern.domain }})</option>
+                        {% endfor %}
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="mentor_id">Select Mentor:</label>
+                    <select id="mentor_id" name="mentor_id" required class="form-control">
+                        <option value="" disabled selected>-- Select Mentor --</option>
+                        {% for mentor in mentors %}
+                            <option value="{{ mentor.id }}">{{ mentor.name }} (Spec: {{ mentor.specialization }})</option>
+                        {% endfor %}
+                    </select>
+                </div>
+
+                <button type="submit" class="btn btn-primary btn-block" style="margin-top: 1.5rem;">Assign Mentor</button>
+            </form>
+        {% else %}
+            <div style="text-align: center; padding: 2rem 0;">
+                <p style="color: #6c757d;">Ensure both interns and mentors exist to perform assignment.</p>
+                <a href="/add-intern" class="btn btn-secondary btn-sm">Register Intern</a>
+            </div>
+        {% endif %}
+    </div>
+
+    <!-- Active Allocations Side -->
+    <div class="card">
+        <h3 class="card-title">Active Assignments</h3>
+        
+        {% if assignments %}
+            <div style="max-height: 380px; overflow-y: auto;">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Intern</th>
+                            <th>Mentor</th>
+                            <th>Specialization</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for assignment in assignments %}
+                            <tr>
+                                <td><strong>{{ assignment.intern_name }}</strong></td>
+                                <td>{{ assignment.mentor_name }}</td>
+                                <td>
+                                    <span class="badge badge-blue">{{ assignment.specialization }}</span>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        {% else %}
+            <div style="text-align: center; padding: 3rem 0;">
+                <p style="color: #6c757d; font-size: 0.95rem;">No active assignments found.</p>
+            </div>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

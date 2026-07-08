@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}TESRECO Intern Management System{% endblock %}</title>
+    
+    <!-- Google Fonts for standard Poppins -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+
+    <!-- Simple Student Project Navbar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="/" class="nav-brand">
+                <img src="{{ url_for('static', filename='images/logo.png') }}" alt="TESRECO Logo" class="nav-logo" onerror="this.style.display='none'">
+                TESRECO Portal
+            </a>
+            
+            <button class="nav-toggle" id="nav-toggle-btn">☰</button>
+            
+            <ul class="nav-menu" id="nav-menu-list">
+                <li><a href="/" class="nav-link" id="nav-home">Home</a></li>
+                <li><a href="/about" class="nav-link" id="nav-about">About Project</a></li>
+                <li><a href="/view-interns" class="nav-link" id="nav-view">View Interns</a></li>
+                <li><a href="/add-intern" class="nav-link" id="nav-add">Register Intern</a></li>
+                <li><a href="/attendance" class="nav-link" id="nav-attendance">Attendance</a></li>
+                <li><a href="/assign-mentor" class="nav-link" id="nav-mentor">Assign Mentor</a></li>
+                <li><a href="/demo" class="nav-link" id="nav-demo">Python Demo</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Main Content Area -->
+    <main class="main-content">
+        <!-- Flash Alerts -->
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                <div class="flash-container">
+                    {% for category, message in messages %}
+                        <div class="flash-message {{ category }}">
+                            <span>{{ message }}</span>
+                            <button class="flash-close" onclick="this.parentElement.remove()">×</button>
+                        </div>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        {% endwith %}
+
+        {% block content %}{% endblock %}
+    </main>
+
+    <!-- Simple Project Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <p>&copy; 2026 TESRECO Technologies. Intern Management Portal (B.Tech Internship Project)</p>
+            <div class="footer-links">
+                <a href="/about">About System</a> |
+                <a href="/demo">Python Tasks Demo</a> |
+                <a href="/interns" target="_blank">JSON API Link</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Script for mobile menu toggle -->
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>
